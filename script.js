@@ -1,14 +1,15 @@
-// Wait for the DOM content to be loaded before running the script
+// Script to initialize and manage the cubing.js viewer
+
 document.addEventListener("DOMContentLoaded", () => {
-    // Create a new twisty player
-    const player = new cubing.twisty.Player();
+  const cubeElement = document.getElementById("cube-container");
 
-    // Set the puzzle type to 3x3
-    player.experimentalSetPuzzle(`{"type": "3x3x3"}`);
+  // Initialize the twisty player
+  const twistyPlayer = new cubing.twisty.TwistyPlayer({
+    puzzle: "3x3x3"
+  });
 
-    // Add the player to the cube display div
-    document.getElementById("cube-display").appendChild(player);
+  cubeElement.appendChild(twistyPlayer);
 
-    // Optionally, you can set a scramble or a sequence of moves
-    player.experimentalLoadAlg("R U R' U'");
+  // Example scramble (You will replace this with actual data from your cube)
+  twistyPlayer.experimentalSetAlg("R U R' U'");
 });
